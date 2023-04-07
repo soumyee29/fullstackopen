@@ -5,7 +5,7 @@ sequenceDiagram
 
     browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note, payload: user input (new note)
     activate server
-    Note left of server: The server appends the new note to /notes in-memory and instructs the browser to reload /notes page
+    Note left of server: The server appends the new note to /notes in-memory and instructs the browser to reload the /notes page
     server-->>browser: HTTP 302 (no data)
     deactivate server
 
