@@ -5,10 +5,11 @@ sequenceDiagram
 
     browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note, form data: note=mogee
     activate server
-    Note left of server: The server appends the new note to the JSON data and instructs the browser to reload the /notes page
+    Note left of server: The server: <br/> 1. generates the new note object from the request payload by generating the timestamp,<br/> 2. appends the new note object to the JSON data,<br/> 3. instructs the browser to reload the /notes page
     server-->>browser: HTTP 302
     deactivate server
 
+    Note right of browser: The browser reloads the /notes page as instructed by the server
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate server
     server-->>browser: HTML document
