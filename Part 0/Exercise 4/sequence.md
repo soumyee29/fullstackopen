@@ -3,6 +3,13 @@ sequenceDiagram
     participant browser
     participant server
 
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    Note to the right of browser: The browser sends the user input (new note) in the request payload.
+    activate server
+    Note to the right of server: The server appends the new note to /notes in-memory and instructs the browser to reload /notes page.
+    server->>browser: HTTP 302 (no data)
+    deactivate server
+
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     activate server
     server-->>browser: HTML document
