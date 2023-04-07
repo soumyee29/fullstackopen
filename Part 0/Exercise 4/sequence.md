@@ -3,10 +3,10 @@ sequenceDiagram
     participant browser
     participant server
 
-    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note, payload: user input (new note)
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note, form data: note=mogee
     activate server
-    Note left of server: The server appends the new note to /notes in-memory and instructs the browser to reload the /notes page
-    server-->>browser: HTTP 302 (no data)
+    Note left of server: The server appends the new note to the JSON data and instructs the browser to reload the /notes page
+    server-->>browser: HTTP 302
     deactivate server
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
